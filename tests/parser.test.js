@@ -143,6 +143,11 @@ describe('parseHumanDatetime — date format variants', () => {
     expect(utcStr(ms)).toBe('2026-04-07T10:00:00.000Z');
   });
 
+  test('abbreviated month name (May)', () => {
+    const ms = parseHumanDatetime('10:00:00 UTC\n7 May 2026');
+    expect(utcStr(ms)).toBe('2026-05-07T10:00:00.000Z');
+  });
+
   test('day name is ignored', () => {
     const ms = parseHumanDatetime('10:00:00 UTC\nMonday, 7 April 2026');
     expect(utcStr(ms)).toBe('2026-04-07T10:00:00.000Z');

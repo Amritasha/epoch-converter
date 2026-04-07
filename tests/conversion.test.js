@@ -133,6 +133,23 @@ describe('fromEpoch — boundary and edge cases', () => {
   });
 });
 
+describe('fromEpoch — ambiguous epoch lengths', () => {
+  test('11-digit input treated as milliseconds', () => {
+    // 11 digits > 10, so no multiplication — treated as ms directly
+    const r = fromEpoch('17755200000'); // ~year 2532 if treated as seconds — wrong
+    expect(r).not.toBeNull();
+    expect(r.epochMs).toBe(17755200000);  // kept as-is (ms)
+    expect(r.epochSec).toBe(17755200);
+  });
+
+  test('12-digit input treated as milliseconds', () => {
+    const r = fromEpoch('177552000000');
+    expect(r).not.toBeNull();
+    expect(r.epochMs).toBe(177552000000);
+    expect(r.epochSec).toBe(177552000);
+  });
+});
+
 describe('fromEpoch — invalid inputs', () => {
   test('empty string returns null', () => expect(fromEpoch('')).toBeNull());
   test('non-numeric string returns null', () => expect(fromEpoch('abc')).toBeNull());

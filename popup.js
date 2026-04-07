@@ -110,7 +110,7 @@ function convertFromEpoch() {
   }
 
   var epochMs = parseInt(input, 10);
-  if (input.length <= 10) {
+  if (input.length === 10) {
     epochMs = epochMs * 1000;
   }
 
