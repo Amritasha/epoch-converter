@@ -1,0 +1,15 @@
+{
+  "name": "epoch-converter",
+  "version": "1.1.0",
+  "description": "Chrome extension: convert epoch, IST, and UTC",
+  "scripts": {
+    "test": "jest --testPathPattern=tests/"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  },
+  "jest": {
+    "testMatch": ["**/tests/**/*.test.js"],
+    "collectCoverageFrom": ["tests/lib.js"]
+  }
+}
